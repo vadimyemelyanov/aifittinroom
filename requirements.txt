@@ -7,5 +7,6 @@ streamlit
 email-validator
 requests
 boto3
+openai
 chromadb
 pysqlite3-binary
