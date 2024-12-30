@@ -1,0 +1,8 @@
+fastapi
+langchain
+langchain-core
+Pillow
+sqlalchemy
+streamlit
+email-validator
+requests
