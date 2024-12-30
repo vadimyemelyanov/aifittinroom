@@ -1,0 +1,32 @@
+version: 1.0
+runtime: python3
+build:
+  commands:
+    # Install dependencies
+    - pip install -r requirements.txt
+    # Add any additional build commands here
+
+service:
+  # The port your application listens on
+  port: 8080
+  command: ["python", "streamlit", "run", "app/main.py"]
+
+  # Environment variables for your application
+  environment:
+    - name: OPEN_API_KEY
+      value: arn:aws:secretsmanager:eu-central-1:593793028292:secret:OPEN_API_KEY-SztAGw
+    - name: S3_BUCKET_NAME
+      value: wedding-dresses-images
+    - name: PERSIST_DIRECTORY
+      value: db
+
+source:
+  # Specify the source of your application code
+  repository: 
+    connection_name: aws-app-runner-connection
+    image_repository: aifittingroom
+    image_tag: latest
+
+instance_configuration:
+  cpu: 512
+  memory: 1024
