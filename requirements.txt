@@ -7,4 +7,4 @@ streamlit
 email-validator
 requests
 boto3
-chroma-db
+chromadb
