@@ -1,6 +1,6 @@
 # AI Fitting Room
 # Version 0.0.1
-##Set-university proj demo
+## Set-university proj demo
 
 This project is a streamlit app for searching wedding dresses. It uses OpenAI API for generating embeddings and searching for dresses. It has a database of dresses and a chatbot for searching. Admin can add dresses to the database.
 
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 streamlit run app/main.py
 ```
 
-#Features
+# Features
 
 - Shop page with search and filter options
 - Admin page for adding dresses to the database
