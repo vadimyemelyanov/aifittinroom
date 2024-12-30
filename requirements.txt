@@ -8,3 +8,4 @@ email-validator
 requests
 boto3
 chromadb
+pysqlite3
