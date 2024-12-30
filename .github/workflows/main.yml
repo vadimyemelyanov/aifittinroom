@@ -1,0 +1,23 @@
+name: Deploy Streamlit App to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Deploy to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ${{ secrets.EC2_KEY }} ubuntu@${{ secrets.EC2_IP }} << 'EOF'
+        cd <your-repo>
+        git pull origin main
+        pip3 install -r requirements.txt
+        pm2 restart streamlit-app || pm2 start "streamlit run app.py --server.port 8501 --server.address 0.0.0.0" --name streamlit-app
+        EOF
