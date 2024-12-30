@@ -25,9 +25,9 @@ def handle_search(collection):
 
     # AI Search
     search_query = st.text_area("Describe your dream dress:", 
-                                placeholder="Example: A romantic A-line dress with lace sleeves and a sweetheart neckline, perfect for a garden wedding")
+                                placeholder="Example: indian style dress with a lot of details")
 
-    n_results = st.slider("Number of results", min_value=1, max_value=10, value=5)
+    n_results = st.slider("Number of results", min_value=1, max_value=10, value=3)
 
     if st.button("Search Dresses") and search_query:
         with st.spinner("Finding perfect matches..."):

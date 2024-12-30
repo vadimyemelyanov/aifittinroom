@@ -44,7 +44,7 @@ def analyze_dress_image(img_str):
         messages=[{
             "role": "user",
             "content": [
-                {"type": "text", "text": "Analyze this wedding dress and provide detailed specifications including: material, color, fabric, close color shemas, style, silhouette, neckline, train length, suitable body types, occasion recommendations, and any unique features, recommended age group, and any other relevant information. Format as JSON."},
+                {"type": "text", "text": "Analyze this wedding dress and provide detailed specifications including: material, color, fabric, close color shemas, style, silhouette, neckline, train length, suitable body types, occasion recommendations, and any unique features, recommended age group, and any other relevant information. At least 50 tags and specifications. Format as JSON. "},
                 {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_str}"}}
             ]
         }]
@@ -71,7 +71,7 @@ def analyze_search_results(search_query, results):
         search_results_context += f"Match score: {(1 - results['distances'][0][i]):.1%}\n"
     
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": search_results_context}
@@ -90,7 +90,7 @@ def search_wedding_dresses():
     headers = {"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"}
     params = {
         "query": "wedding dress portrait",
-        "per_page": 20,
+        "per_page": 10,
         "orientation": "portrait"
     }
     
@@ -103,7 +103,7 @@ def main():
     
     for i, dress in enumerate(dresses, 1):
         try:
-            print(f"\nProcessing dress {i}/20...")
+            print(f"\nProcessing dress {i}/10...")
             
             # Download image
             img_response = requests.get(dress["urls"]["regular"])
