@@ -7,6 +7,4 @@ streamlit
 email-validator
 requests
 boto3
-langchain
-langsmith
 chroma-db
